@@ -26,14 +26,17 @@ export const AskVelmuruganAI: React.FC = () => {
     "Tell me about GaadiBazaar & Joysale.",
   ]);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatScrollContainerRef = useRef<HTMLDivElement>(null);
 
   const getClientTimestamp = () => {
     return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 
+  // Scroll ONLY the inner chat box container to bottom, WITHOUT scrolling the outer page window
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatScrollContainerRef.current) {
+      chatScrollContainerRef.current.scrollTop = chatScrollContainerRef.current.scrollHeight;
+    }
   }, [messages, loading]);
 
   const handleSend = async (queryToSend?: string) => {
@@ -138,8 +141,8 @@ export const AskVelmuruganAI: React.FC = () => {
             </button>
           </div>
 
-          {/* Messages Scroll Area */}
-          <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4">
+          {/* Messages Scroll Area - Ref attached here to scroll ONLY this box */}
+          <div ref={chatScrollContainerRef} className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -187,8 +190,6 @@ export const AskVelmuruganAI: React.FC = () => {
                 </div>
               </div>
             )}
-
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Quick Suggested Prompt Chips */}
