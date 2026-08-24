@@ -119,15 +119,15 @@ export const profileData: ProfileData = {
       subtitle: "Commercial vehicle marketplace & financing ecosystem mobile app",
       description:
         "Production mobile marketplace application built for Chola's commercial vehicle ecosystem, enabling buyers and sellers to discover, evaluate, and finance vehicles.",
-      type: "Flutter Mobile Application",
-      technologies: ["Flutter", "Dart", "REST APIs", "Mobile UI", "Auto Marketplace"],
+      type: "Native Android Application",
+      technologies: ["Native Android", "Java/Kotlin", "REST APIs", "Mobile UI", "Auto Marketplace"],
       category: "mobile",
       featured: true,
       link: "https://play.google.com/store/apps/details?id=com.gb.gaadibazaar&hl=en_IN",
       buttonText: "View on Google Play",
       highlights: [
-        "Production commercial vehicle marketplace mobile app for Chola ecosystem",
-        "Built with Flutter, Dart, and high-performance REST APIs",
+        "Production commercial vehicle marketplace Native Android application for Chola ecosystem",
+        "Built with Native Android (Java/Kotlin) and high-performance REST APIs",
         "Vehicle discovery, evaluation workflows, and loan application integrations",
       ],
     },
@@ -300,7 +300,7 @@ export const profileData: ProfileData = {
     {
       keywords: ["gaadibazaar", "gaadi bazaar", "commercial vehicle", "vehicles"],
       answer:
-        "GaadiBazaar is a production Flutter mobile application built for Cholamandalam's commercial vehicle marketplace ecosystem, enabling vehicle discovery, evaluation workflows, and financing integrations.",
+        "GaadiBazaar is a production Native Android application built with Java/Kotlin for Cholamandalam's commercial vehicle marketplace ecosystem, enabling vehicle discovery, evaluation workflows, and financing integrations.",
     },
     {
       keywords: ["joysale", "classifieds", "marketplace"],
