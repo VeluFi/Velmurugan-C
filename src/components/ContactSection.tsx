@@ -1,30 +1,44 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Linkedin, Github, MapPin, Send, CheckCircle2, MessageSquare } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Send, CheckCircle2, MessageSquare, Loader2 } from "lucide-react";
 import { profileData } from "@/data/profile-data";
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
-      setSubmitted(true);
+    if (!formData.name || !formData.email || !formData.message) return;
 
-      // Trigger mailto link for real-time message dispatch to developer email
+    setLoading(true);
+
+    try {
+      // 1. Post to internal Next.js API Route /api/contact which dispatches to kcvelmurugan96@gmail.com
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      // 2. Open mailto link directed to kcvelmurugan96@gmail.com as instant client backup
       const subject = encodeURIComponent(`Portfolio Message from ${formData.name}`);
       const body = encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       );
-      
-      // Open default mail client in separate thread
-      const mailtoUrl = `mailto:velu.developer.contact@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:kcvelmurugan96@gmail.com?subject=${subject}&body=${body}`;
       window.open(mailtoUrl, "_blank");
 
-      setTimeout(() => setSubmitted(false), 8000);
+      setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 10000);
+    } catch (err) {
+      console.error("Error submitting message:", err);
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,6 +64,23 @@ export const ContactSection: React.FC = () => {
           
           {/* Left Column: Direct Connect Badges */}
           <div className="lg:col-span-5 space-y-4">
+            
+            {/* Direct Email Card */}
+            <a
+              href="mailto:kcvelmurugan96@gmail.com"
+              className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-sky-500/40 transition-all flex items-center gap-4 group glass-card-hover"
+            >
+              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-xs text-slate-400 font-mono block">Direct Email</span>
+                <h3 className="text-base font-bold text-white group-hover:text-sky-400 transition-colors">kcvelmurugan96@gmail.com</h3>
+                <p className="text-xs text-slate-400">Click to send direct email</p>
+              </div>
+            </a>
+
+            {/* LinkedIn Card */}
             <a
               href={profileData.linkedin}
               target="_blank"
@@ -66,6 +97,7 @@ export const ContactSection: React.FC = () => {
               </div>
             </a>
 
+            {/* GitHub Card */}
             <a
               href={profileData.github}
               target="_blank"
@@ -82,6 +114,7 @@ export const ContactSection: React.FC = () => {
               </div>
             </a>
 
+            {/* Location Card */}
             <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
                 <MapPin className="w-6 h-6" />
@@ -101,9 +134,9 @@ export const ContactSection: React.FC = () => {
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-                <h4 className="text-base font-bold text-white">Message Prepared &amp; Dispatched!</h4>
+                <h4 className="text-base font-bold text-white">Message Sent to kcvelmurugan96@gmail.com!</h4>
                 <p className="text-xs text-slate-300">
-                  Thank you for reaching out! Your email app has been opened with your prefilled message. I will respond to your inquiry shortly.
+                  Thank you for reaching out! Your message has been sent directly to kcvelmurugan96@gmail.com. I will get back to you shortly.
                 </p>
               </div>
             ) : (
@@ -117,6 +150,7 @@ export const ContactSection: React.FC = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Jane Doe"
+                      disabled={loading}
                       className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500"
                     />
                   </div>
@@ -128,6 +162,7 @@ export const ContactSection: React.FC = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="jane@company.com"
+                      disabled={loading}
                       className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500"
                     />
                   </div>
@@ -141,16 +176,27 @@ export const ContactSection: React.FC = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Hello Velmurugan, I'd like to discuss a project..."
+                    disabled={loading}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20"
+                  disabled={loading}
+                  className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 disabled:opacity-50"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Send Message</span>
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending to kcvelmurugan96@gmail.com...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Send Message to kcvelmurugan96@gmail.com</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
