@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Bot, Send, Sparkles, User, Loader2, RefreshCw, MessageSquare } from "lucide-react";
+import { Bot, Send, Sparkles, User, Loader2, RefreshCw } from "lucide-react";
 import { sendMessageToAI } from "@/services/aiService";
 import { ChatMessage } from "@/types";
 
@@ -11,7 +11,7 @@ export const AskVelmuruganAI: React.FC = () => {
       id: "init-1",
       role: "assistant",
       content:
-        "Hello! I am Velmurugan C's AI Assistant. Ask me anything about his software development experience at Cholamandalam, Flutter mobile apps (Chola PRO), Next.js web applications (Kyber Office), Native Android work (Hiddy), or technical skills!",
+        "Hello! I am Velmurugan C's AI Assistant. Ask me anything about his software development experience at Cholamandalam, Flutter mobile apps (Chola PRO), Next.js web applications (Kyber Office), Native Android work (Hiddy, Joysale, GaadiBazaar, Turbo Catalogue), or technical skills!",
       timestamp: "Just now",
     },
   ]);
@@ -23,7 +23,7 @@ export const AskVelmuruganAI: React.FC = () => {
     "What is his Next.js experience?",
     "What mobile applications has he worked on?",
     "What is his experience with Flutter?",
-    "What type of enterprise applications has he built?",
+    "Tell me about GaadiBazaar & Joysale.",
   ]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -85,38 +85,38 @@ export const AskVelmuruganAI: React.FC = () => {
   };
 
   return (
-    <section id="ask-ai" className="py-20 bg-slate-950">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="ask-ai" className="py-20 bg-slate-50 dark:bg-slate-950 w-full max-w-full overflow-hidden transition-colors">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
         {/* Section Header */}
         <div className="text-center space-y-3 mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-mono border border-purple-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>INTERACTIVE ASSISTANT</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Ask Velmurugan AI
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
             Have a question about my experience, projects or technical skills?
           </p>
         </div>
 
         {/* ChatGPT Style Container */}
-        <div className="bg-slate-900/80 rounded-3xl border border-slate-800 shadow-2xl overflow-hidden glass-card flex flex-col h-[520px]">
+        <div className="bg-white dark:bg-slate-900/80 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden glass-card flex flex-col h-[520px] w-full">
           
           {/* Chat Header Bar */}
-          <div className="bg-slate-950/90 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+          <div className="bg-slate-100 dark:bg-slate-950/90 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+              <div className="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
                 <Bot className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   Velmurugan Portfolio Bot
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 </h3>
-                <span className="text-[11px] text-slate-400 font-mono">Knowledge Base Assistant</span>
+                <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Knowledge Base Assistant</span>
               </div>
             </div>
             <button
@@ -126,12 +126,12 @@ export const AskVelmuruganAI: React.FC = () => {
                     id: "init-1",
                     role: "assistant",
                     content:
-                      "Hello! I am Velmurugan C's AI Assistant. Ask me anything about his software development experience at Cholamandalam, Flutter mobile apps (Chola PRO), Next.js web applications (Kyber Office), Native Android work (Hiddy), or technical skills!",
-                    timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+                      "Hello! I am Velmurugan C's AI Assistant. Ask me anything about his software development experience at Cholamandalam, Flutter mobile apps (Chola PRO), Next.js web applications (Kyber Office), Native Android work (Hiddy, Joysale, GaadiBazaar, Turbo Catalogue), or technical skills!",
+                    timestamp: "Just now",
                   },
                 ])
               }
-              className="text-xs text-slate-400 hover:text-white flex items-center gap-1 font-mono transition-colors"
+              className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 font-mono transition-colors"
               title="Reset Chat"
             >
               <RefreshCw className="w-3.5 h-3.5" /> Reset
@@ -146,22 +146,22 @@ export const AskVelmuruganAI: React.FC = () => {
                 className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 {msg.role === "assistant" && (
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
 
                 <div
-                  className={`max-w-[82%] rounded-2xl p-4 text-sm leading-relaxed ${
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed ${
                     msg.role === "user"
                       ? "bg-sky-600 text-white rounded-br-none shadow-md"
-                      : "bg-slate-950/90 text-slate-200 border border-slate-800 rounded-bl-none shadow-md"
+                      : "bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-bl-none shadow-sm"
                   }`}
                 >
-                  <p>{msg.content}</p>
+                  <p className="break-words">{msg.content}</p>
                   <span
                     className={`text-[10px] block mt-1.5 text-right font-mono ${
-                      msg.role === "user" ? "text-sky-200" : "text-slate-400"
+                      msg.role === "user" ? "text-sky-100" : "text-slate-500 dark:text-slate-400"
                     }`}
                   >
                     {msg.timestamp}
@@ -169,7 +169,7 @@ export const AskVelmuruganAI: React.FC = () => {
                 </div>
 
                 {msg.role === "user" && (
-                  <div className="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
                     <User className="w-4 h-4" />
                   </div>
                 )}
@@ -178,11 +178,11 @@ export const AskVelmuruganAI: React.FC = () => {
 
             {loading && (
               <div className="flex gap-3 justify-start">
-                <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="bg-slate-950/90 border border-slate-800 rounded-2xl rounded-bl-none p-4 text-sm text-slate-400 flex items-center gap-2">
-                  <Loader2 className="w-4 h-4 animate-spin text-purple-400" />
+                <div className="bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl rounded-bl-none p-4 text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                  <Loader2 className="w-4 h-4 animate-spin text-purple-600 dark:text-purple-400" />
                   <span className="font-mono text-xs">Analyzing portfolio knowledge base...</span>
                 </div>
               </div>
@@ -192,14 +192,14 @@ export const AskVelmuruganAI: React.FC = () => {
           </div>
 
           {/* Quick Suggested Prompt Chips */}
-          <div className="px-4 py-2 bg-slate-950/50 border-t border-slate-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar">
-            <span className="text-[10px] font-mono text-slate-400 shrink-0 uppercase">Suggested:</span>
+          <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-950/50 border-t border-slate-200 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar">
+            <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 shrink-0 uppercase">Suggested:</span>
             {suggestedChips.map((chip, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(chip)}
                 disabled={loading}
-                className="text-[11px] font-mono px-3 py-1 rounded-full bg-slate-900 hover:bg-slate-800 text-sky-300 border border-slate-800 whitespace-nowrap transition-colors shrink-0 disabled:opacity-50"
+                className="text-[11px] font-mono px-3 py-1 rounded-full bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-sky-600 dark:text-sky-300 border border-slate-200 dark:border-slate-800 whitespace-nowrap transition-colors shrink-0 disabled:opacity-50 shadow-sm"
               >
                 {chip}
               </button>
@@ -207,7 +207,7 @@ export const AskVelmuruganAI: React.FC = () => {
           </div>
 
           {/* Input Footer */}
-          <div className="p-4 bg-slate-950 border-t border-slate-800 flex items-center gap-3">
+          <div className="p-4 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
             <input
               type="text"
               value={inputQuery}
@@ -215,7 +215,7 @@ export const AskVelmuruganAI: React.FC = () => {
               onKeyDown={handleKeyDown}
               placeholder="Ask a question about Velmurugan's experience, skills, or projects..."
               disabled={loading}
-              className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-purple-500 transition-colors"
+              className="flex-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500 transition-colors"
             />
             <button
               onClick={() => handleSend()}
