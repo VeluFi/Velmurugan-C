@@ -24,14 +24,14 @@ export async function POST(req: NextRequest) {
         message: message,
         subject: `New Portfolio Message from ${name} (${email})`,
         from_name: `${name} (Portfolio Website)`,
-        to_email: "kcvelmurugan96@gmail.com",
+        to_email: "velu.selvam96@gmail.com",
       }),
     });
 
     const data = await response.json();
 
     if (data.success || response.ok) {
-      return NextResponse.json({ success: true, message: "Message delivered successfully to kcvelmurugan96@gmail.com" });
+      return NextResponse.json({ success: true, message: "Message delivered successfully to velu.selvam96@gmail.com" });
     } else {
       // Fallback response acknowledgement
       return NextResponse.json({ success: true, message: "Message received" });

@@ -16,19 +16,19 @@ export const ContactSection: React.FC = () => {
     setLoading(true);
 
     try {
-      // 1. Post to internal Next.js API Route /api/contact which dispatches to kcvelmurugan96@gmail.com
+      // 1. Post to internal Next.js API Route /api/contact which dispatches to velu.selvam96@gmail.com
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      // 2. Open mailto link directed to kcvelmurugan96@gmail.com as instant client backup
+      // 2. Open mailto link directed to velu.selvam96@gmail.com as instant client backup
       const subject = encodeURIComponent(`Portfolio Message from ${formData.name}`);
       const body = encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       );
-      const mailtoUrl = `mailto:kcvelmurugan96@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:velu.selvam96@gmail.com?subject=${subject}&body=${body}`;
       window.open(mailtoUrl, "_blank");
 
       setSubmitted(true);
@@ -67,7 +67,7 @@ export const ContactSection: React.FC = () => {
             
             {/* Direct Email Card */}
             <a
-              href="mailto:kcvelmurugan96@gmail.com"
+              href="mailto:velu.selvam96@gmail.com"
               className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-sky-500/40 transition-all flex items-center gap-4 group glass-card-hover"
             >
               <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
@@ -75,7 +75,7 @@ export const ContactSection: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs text-slate-400 font-mono block">Direct Email</span>
-                <h3 className="text-base font-bold text-white group-hover:text-sky-400 transition-colors">kcvelmurugan96@gmail.com</h3>
+                <h3 className="text-base font-bold text-white group-hover:text-sky-400 transition-colors">velu.selvam96@gmail.com</h3>
                 <p className="text-xs text-slate-400">Click to send direct email</p>
               </div>
             </a>
@@ -134,9 +134,9 @@ export const ContactSection: React.FC = () => {
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-                <h4 className="text-base font-bold text-white">Message Sent to kcvelmurugan96@gmail.com!</h4>
+                <h4 className="text-base font-bold text-white">Message Sent to velu.selvam96@gmail.com!</h4>
                 <p className="text-xs text-slate-300">
-                  Thank you for reaching out! Your message has been sent directly to kcvelmurugan96@gmail.com. I will get back to you shortly.
+                  Thank you for reaching out! Your message has been sent directly to velu.selvam96@gmail.com. I will get back to you shortly.
                 </p>
               </div>
             ) : (
@@ -189,12 +189,12 @@ export const ContactSection: React.FC = () => {
                   {loading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending to kcvelmurugan96@gmail.com...</span>
+                      <span>Sending message...</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Send Message to kcvelmurugan96@gmail.com</span>
+                      <span>Send Message</span>
                     </>
                   )}
                 </button>
