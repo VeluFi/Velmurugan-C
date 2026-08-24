@@ -64,7 +64,7 @@ npm run start
 See `.env.example` for details:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://velmurugan-portfolio.vercel.app
+NEXT_PUBLIC_SITE_URL=https://velmurugan-c.com
 NEXT_PUBLIC_GITHUB_USERNAME=VeluFi
 AI_API_URL=
 AI_API_KEY=
