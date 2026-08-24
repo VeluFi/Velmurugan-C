@@ -12,13 +12,24 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
       setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
+
+      // Trigger mailto link for real-time message dispatch to developer email
+      const subject = encodeURIComponent(`Portfolio Message from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
+      
+      // Open default mail client in separate thread
+      const mailtoUrl = `mailto:velu.developer.contact@gmail.com?subject=${subject}&body=${body}`;
+      window.open(mailtoUrl, "_blank");
+
+      setTimeout(() => setSubmitted(false), 8000);
       setFormData({ name: "", email: "", message: "" });
     }
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-950 relative">
+    <section id="contact" className="py-20 bg-slate-950/90 dark:bg-slate-950 relative border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -65,7 +76,7 @@ export const ContactSection: React.FC = () => {
                 <Github className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs text-slate-400 font-mono block">Code &amp; Projects</span>
+                <span className="text-xs text-slate-400 font-mono block">Code &amp; Repositories</span>
                 <h3 className="text-base font-bold text-white group-hover:text-sky-400 transition-colors">GitHub</h3>
                 <p className="text-xs text-slate-400">github.com/VeluFi</p>
               </div>
@@ -78,7 +89,7 @@ export const ContactSection: React.FC = () => {
               <div>
                 <span className="text-xs text-slate-400 font-mono block">Location</span>
                 <h3 className="text-base font-bold text-white">{profileData.location}</h3>
-                <p className="text-xs text-slate-400">Cholamandalam Investment and Finance Company Limited</p>
+                <p className="text-xs text-slate-400">{profileData.company}</p>
               </div>
             </div>
           </div>
@@ -90,8 +101,10 @@ export const ContactSection: React.FC = () => {
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-                <h4 className="text-base font-bold text-white">Message Sent Successfully</h4>
-                <p className="text-xs text-slate-300">Thank you for reaching out! I will get back to you shortly.</p>
+                <h4 className="text-base font-bold text-white">Message Prepared &amp; Dispatched!</h4>
+                <p className="text-xs text-slate-300">
+                  Thank you for reaching out! Your email app has been opened with your prefilled message. I will respond to your inquiry shortly.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
