@@ -7,6 +7,10 @@ export interface Project {
   technologies: string[];
   category: "mobile" | "web" | "pwa";
   highlights: string[];
+  link?: string;
+  buttonText?: string;
+  githubUrl?: string;
+  isPrivate?: boolean;
   featured?: boolean;
 }
 
@@ -100,11 +104,31 @@ export const profileData: ProfileData = {
       technologies: ["Flutter", "Dart", "REST APIs", "Mobile UI"],
       category: "mobile",
       featured: true,
+      link: "https://play.google.com/store/apps/details?id=com.gb.cholafsa&hl=en_IN",
+      buttonText: "View on Google Play",
       highlights: [
         "Production mobile application for field-sales teams",
         "Built using Flutter & Dart cross-platform framework",
         "Seamless REST API integration with enterprise backends",
         "Optimized mobile UI/UX for fast field operations",
+      ],
+    },
+    {
+      id: "gaadibazaar",
+      title: "GaadiBazaar",
+      subtitle: "Commercial vehicle marketplace & financing ecosystem mobile app",
+      description:
+        "Production mobile marketplace application built for Chola's commercial vehicle ecosystem, enabling buyers and sellers to discover, evaluate, and finance vehicles.",
+      type: "Flutter Mobile Application",
+      technologies: ["Flutter", "Dart", "REST APIs", "Mobile UI", "Auto Marketplace"],
+      category: "mobile",
+      featured: true,
+      link: "https://play.google.com/store/apps/details?id=com.gb.gaadibazaar&hl=en_IN",
+      buttonText: "View on Google Play",
+      highlights: [
+        "Production commercial vehicle marketplace mobile app for Chola ecosystem",
+        "Built with Flutter, Dart, and high-performance REST APIs",
+        "Vehicle discovery, evaluation workflows, and loan application integrations",
       ],
     },
     {
@@ -117,11 +141,50 @@ export const profileData: ProfileData = {
       technologies: ["Next.js", "React", "TypeScript", "REST APIs", "Responsive UI"],
       category: "web",
       featured: true,
+      link: "https://office.kyberai.in/",
+      buttonText: "View Application",
+      isPrivate: true,
       highlights: [
         "Case management and verification workflow tracking",
         "Real-time operational decision support dashboard",
         "Built with Next.js, React & TypeScript",
         "Fully responsive enterprise user interface",
+      ],
+    },
+    {
+      id: "joysale",
+      title: "Joysale",
+      subtitle: "Classifieds marketplace mobile application",
+      description:
+        "Production classifieds marketplace mobile application featuring real-time product discovery, location search, buyer-seller messaging, and REST API synchronization.",
+      type: "Native Android Application",
+      technologies: ["Native Android", "Java/Kotlin", "REST APIs", "Mobile UI", "Marketplace"],
+      category: "mobile",
+      featured: false,
+      link: "https://play.google.com/store/apps/details?id=com.hitasoft.app.joysale&hl=en_IN",
+      buttonText: "View on Google Play",
+      highlights: [
+        "Classifieds buy/sell marketplace mobile application",
+        "Native Android implementation with Java/Kotlin",
+        "Location-based search & REST API integration",
+      ],
+    },
+    {
+      id: "turbo-catalogue",
+      title: "Turbo Catalogue",
+      subtitle: "Product catalog mobile application for product discovery",
+      description:
+        "Mobile product catalogue application featuring interactive category search, product specifications, image caching, and REST API integration.",
+      type: "Native Android Application",
+      technologies: ["Native Android", "Java/Kotlin", "REST APIs", "Product Catalogue UI"],
+      category: "mobile",
+      featured: false,
+      link: "https://play.google.com/store/apps/details?id=com.newturbo.productcatlogue&hl=en_IN",
+      buttonText: "View on Google Play",
+      highlights: [
+        "Interactive product catalogue Android app",
+        "Optimized image caching and dynamic filtering",
+        "Native Android Java/Kotlin implementation",
       ],
     },
     {
@@ -134,11 +197,12 @@ export const profileData: ProfileData = {
       technologies: ["Native Android", "Java/Kotlin", "REST APIs", "Android UI"],
       category: "mobile",
       featured: false,
+      link: "https://play.google.com/store/apps/details?id=com.hitasoft.app.hiddy&hl=en_IN",
+      buttonText: "View on Google Play",
       highlights: [
         "Native Android architecture with Java & Kotlin",
         "Custom UI implementation & platform integrations",
         "Robust REST API synchronization",
-        "Demonstration of native Android performance & capabilities",
       ],
     },
     {
@@ -151,11 +215,12 @@ export const profileData: ProfileData = {
       technologies: ["Next.js", "React", "TypeScript", "PWA", "Responsive UI", "REST APIs"],
       category: "pwa",
       featured: false,
+      link: "https://github.com/VeluFi",
+      buttonText: "Explore Architecture",
       highlights: [
         "PWA capabilities including offline support and app-like UX",
         "Built using Next.js, React, and TypeScript",
         "Multi-device responsiveness (Desktop, Tablet, Mobile)",
-        "Fast client-side API integrations",
       ],
     },
   ],
@@ -231,6 +296,21 @@ export const profileData: ProfileData = {
       keywords: ["chola pro", "chola", "field-sales", "sales"],
       answer:
         "Chola PRO is a production mobile application built using Flutter and Dart for Cholamandalam's field-sales ecosystem. It features REST API integration and a responsive mobile UI engineered for enterprise field operations.",
+    },
+    {
+      keywords: ["gaadibazaar", "gaadi bazaar", "commercial vehicle", "vehicles"],
+      answer:
+        "GaadiBazaar is a production Flutter mobile application built for Cholamandalam's commercial vehicle marketplace ecosystem, enabling vehicle discovery, evaluation workflows, and financing integrations.",
+    },
+    {
+      keywords: ["joysale", "classifieds", "marketplace"],
+      answer:
+        "Joysale is a production classifieds marketplace mobile application built for Native Android using Java/Kotlin, featuring location search, real-time messaging, and REST API integration.",
+    },
+    {
+      keywords: ["turbo catalogue", "turbo catalog", "turbo", "catalogue"],
+      answer:
+        "Turbo Catalogue is a Native Android product catalogue application featuring interactive category discovery, high-performance image caching, and product specifications.",
     },
     {
       keywords: ["kyber office", "kyber", "verification", "cases", "workflow"],

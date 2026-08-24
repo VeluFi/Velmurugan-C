@@ -11,6 +11,7 @@ export interface Project {
   buttonText?: string;
   githubUrl?: string;
   isPrivate?: boolean;
+  featured?: boolean;
 }
 
 export interface SkillCategory {
