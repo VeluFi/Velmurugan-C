@@ -28,10 +28,10 @@ export const About: React.FC = () => {
           <div className="lg:col-span-7 bg-white dark:bg-slate-900/60 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-6 shadow-sm">
             <div className="space-y-4 text-slate-700 dark:text-slate-300 text-base leading-relaxed">
               <p>
-                I am a <strong className="text-slate-900 dark:text-white">Software Developer</strong> focused on building reliable and user-friendly applications across web and mobile platforms. My experience includes Flutter mobile development, Native Android development, and modern web application development using Next.js, React and TypeScript.
+                Hi, I&apos;m <strong className="text-slate-900 dark:text-white">Velmurugan C</strong>, a <strong className="text-slate-900 dark:text-white">Software Developer</strong> specializing in Flutter, Next.js, React, Native Android, and Progressive Web App (PWA) development.
               </p>
               <p>
-                I enjoy working on production applications, solving engineering problems, integrating APIs, improving user experiences and building scalable frontend solutions.
+                I build modern, scalable web and mobile applications with a focus on performance, usability, and clean architecture. My experience spans cross-platform mobile applications, enterprise web portals, REST API integrations, and production-ready software solutions.
               </p>
             </div>
 

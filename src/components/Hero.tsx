@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
                 <span>{profileData.title}</span>
                 <span className="hidden sm:inline text-slate-400">|</span>
                 <span className="text-slate-700 dark:text-slate-300 text-sm sm:text-lg font-mono block w-full sm:w-auto">
-                  Flutter · Next.js · Native Android · PWA
+                  Flutter | Next.js | React | Native Android | PWA
                 </span>
               </div>
             </div>
@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
                 href="#projects"
                 className="px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-sky-500/20 flex items-center gap-2 group"
               >
-                View Projects
+                View Velmurugan C&apos;s Projects
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
@@ -164,7 +164,7 @@ export const Hero: React.FC = () => {
                 <div>&#125;;</div>
 
                 <div className="pt-2 border-t border-slate-800 text-slate-400 text-[11px] flex items-center justify-between">
-                  <span>// Ready to innovate</span>
+                  <span>{"// Ready to innovate"}</span>
                   <span className="text-emerald-400 font-mono">100% Production Ready</span>
                 </div>
               </div>
